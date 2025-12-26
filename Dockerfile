@@ -24,8 +24,7 @@ COPY ./Docker ./Docker
 
 RUN chmod +x ./Docker/scripts/* && dos2unix ./Docker/scripts/*
 
-RUN ./Docker/scripts/generate_database.sh
-
+# ❌ NÃO roda generate_database.sh aqui
 RUN npm run build
 
 # -----------------------------
@@ -55,4 +54,5 @@ COPY --from=builder /evolution/tsup.config.ts ./tsup.config.ts
 
 EXPOSE 8080
 
+# ✅ Banco + migrations rodam AQUI, com env do Render
 ENTRYPOINT ["/bin/bash", "-c", ". ./Docker/scripts/deploy_database.sh && npm run start:prod"]
