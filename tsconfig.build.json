@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "src/api/integrations/chatbot/**",
+    "src/api/routes/chat.router.ts",
+    "src/api/services/channel.service.ts",
+    "src/api/services/proxy.service.ts"
+  ]
+}
