@@ -11,6 +11,7 @@ WORKDIR /evolution
 
 COPY ./package*.json ./
 COPY ./tsconfig.json ./
+COPY ./tsconfig.build.json ./
 COPY ./tsup.config.ts ./
 
 RUN npm ci --silent
