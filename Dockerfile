@@ -16,6 +16,10 @@ COPY prisma ./prisma
 COPY manager ./manager
 COPY runWithProvider.js ./
 
+# ⚠️ MIGRATION RODA AQUI (BUILD)
+RUN npx prisma generate
+RUN npx prisma migrate deploy
+
 RUN npm run build
 
 FROM node:24-alpine
@@ -23,6 +27,7 @@ FROM node:24-alpine
 RUN apk update && apk add --no-cache tzdata ffmpeg bash openssl
 
 ENV TZ=America/Sao_Paulo
+ENV NODE_ENV=production
 ENV DOCKER_ENV=true
 
 WORKDIR /evolution
